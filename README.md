@@ -9,6 +9,7 @@ Algorithm
 Step 1: Start the program. Step 2: Initialize the HAL library, system clock (64 MHz), and UART peripheral. Step 3: Enable clocks for GPIO Port A and Port C. Step 4: Configure pin PA5 (LD2) as digital output push-pull and pin PC13 (B1) as digital input with internal pull-up. Step 5: Set the initial state of the LED (PA5) to OFF (GPIO_PIN_RESET). Step 6: Initialize tracking variable last_toggle_time = 0 and set blink_interval_ms = 200. Step 7: Enter the infinite loop (while(1)). Step 8: Read the button state at pin PC13 using HAL_GPIO_ReadPin(). Step 9: Check if the button is pressed (active LOW: GPIO_PIN_RESET): If Pressed: Check if (HAL_GetTick() - last_toggle_time) >= blink_interval_ms. If the condition is met, update last_toggle_time = HAL_GetTick() and toggle the LED state (HAL_GPIO_TogglePin()). If Released (GPIO_PIN_SET): Force the LED OFF immediately (HAL_GPIO_WritePin() to RESET). Step 10: Repeat from Step 8 continuously. Step 11: Stop (program loop runs indefinitely).
 
 Program
+```
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
@@ -200,7 +201,10 @@ void assert_failed(uint8_t *file, uint32_t line)
 {
 }
 #endif
-OUTPUT
-WhatsApp Image 2026-09-15 at 9 25 18 AM
-RESULT
+```
+
+## OUTPUT
+<img width="619" height="619" alt="image" src="https://github.com/user-attachments/assets/61205b15-8ca6-45ed-86bd-10f3d796ddf9" />
+
+## RESULT
 The push button was successfully interfaced with the STM32 microcontroller. The LED connected to PA5 turned ON when the push button connected to PA0 was pressed (logic HIGH) and turned OFF when the push button was released (logic LOW).
